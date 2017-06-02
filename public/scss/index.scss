@@ -1,0 +1,83 @@
+html, body { width: 100%; height: 100%; -webkit-font-smoothing: antialiased; background-color: #efefef;}
+
+html { box-sizing: border-box; font-size: 14px; font-family:Helvetica,'Apple SD Gothic Neo',Sans-serif; }
+
+body,p,h2 { margin: 0; padding: 0; }
+
+ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
+
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  .title {
+    width: 100%;
+    margin: 0 auto;
+    h2 {
+      text-align: center;
+      font-size: 2.6em;
+      padding-top: 40px;
+    }
+  }
+  .bookshelf {
+    padding-top: 20px;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #efefef;
+    .book-container {
+      position: relative;
+      background-color: white;
+      margin: 0 auto;
+      width: 80%;
+      height: auto;
+      box-shadow: 0 8px 14px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.1);
+      .book-list {
+        padding: 40px 30px;
+        box-sizing: border-box;
+        width: 80%;
+        .book_name {
+          font-size: 2.4em;
+          font-weight: 900;
+          padding-bottom: 26px;
+          color: #303030;
+          word-break: keep-all;
+          line-height: 1.3em;
+        }
+        .publisher {
+          font-size: 1.5em;
+          font-weight: 600;
+          color: #707070;
+        }
+      }
+      .btns {
+        position: absolute;
+        margin-left: 90%;
+        width: 10%;
+        height: 100%;
+        .edit {
+          height: 50%;
+          a:hover > .material-icons {
+            color: blue;
+          }
+        }
+        .remove {
+          height: 50%;
+          a:hover > .material-icons {
+            color: red;
+          }
+        }
+        a > i.material-icons {
+          text-align: center;
+          vertical-align: middle;
+          display: inline-block;
+          color: #e0e0e0;
+          font-size: 36px;
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
