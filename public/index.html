@@ -21,11 +21,16 @@
     <div class="bookshelf">
     </div>
 
+    <div class="add-wrap">
+
+        <a class="add-btn"><i class="material-icons">add_circle</i></a>
+
+    </div>
   </div>
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
-<!-- <script type="text/javascript" src="bookshelf.json"></script> -->
+<script src="js/loadBookList.js"></script>
 
 <script>
 var database;
@@ -55,38 +60,7 @@ database = firebase.database();
 //   })
 // }
 
-
-getBookList();
-
-function getBookList(){
-  var bookshelfRef = database.ref('bookshelf/');
-  bookshelfRef.on('value', function(data){
-    data.forEach(function(data){
-      var bookData = data.val();
-      var title = bookData.title;
-      var publisher = bookData.publisher;
-      console.log(title);
-      console.log(publisher);
-      var html =
-      "<div class=\"book-container\">" +
-        "<div class=\"btns\">" +
-          "<div class=\"edit\">" +
-            "<a><i class=\"material-icons\">add</i></a>" +
-          "</div>" +
-          "<div class=\"remove\">" +
-            "<a><i class=\"material-icons\">remove</i></a>" +
-          "</div>" +
-        "</div>" +
-        "<ul class=\"book-list\">" +
-          "<li class=\"book_name\">" + title + "</li>" +
-          "<li class=\"publisher\">" + publisher + "</li>" +
-        "</ul>" +
-      "</div>";
-
-      $(".bookshelf").append(html);
-    })
-  });
-}
+loadBookList();
 
 </script>
 
