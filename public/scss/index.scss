@@ -11,6 +11,24 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
   position: absolute;
   width: 100%;
   height: 100%;
+  // .add-wrap {
+  //   a.add-btn {
+  //     position: fixed;
+  //     float: right;
+  //     bottom: 30px;
+  //     right: 30px;
+  //     width: 50px;
+  //     height: auto;
+  //     background-color: orchid;
+  //     color: white;
+  //     font-size: 30px;
+  //     text-align: center;
+  //     padding: 20px;
+  //   }
+  //   a:hover {
+  //     background-color: red;
+  //   }
+  // }
   .title {
     width: 100%;
     margin: 0 auto;
@@ -22,7 +40,7 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
   }
   .bookshelf {
     padding-top: 20px;
-    width: 90%;
+    width: 70%;
     height: 100%;
     margin: 0 auto;
     margin-top: 40px;
@@ -30,8 +48,9 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
     .book-container {
       position: relative;
       background-color: white;
-      margin: 0 auto;
-      width: 80%;
+      // margin: 0 auto 26px;
+      margin-bottom: 26px;
+      width: 100%;
       height: auto;
       box-shadow: 0 8px 14px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.1);
       .book-list {
@@ -48,7 +67,7 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
         }
         .publisher {
           font-size: 1.5em;
-          font-weight: 600;
+          font-weight: normal;
           color: #707070;
         }
       }
@@ -58,24 +77,34 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
         width: 10%;
         height: 100%;
         .edit {
+          position: absolute;
+          width: 100%;
           height: 50%;
+          top:0;
           a:hover > .material-icons {
             color: blue;
           }
         }
         .remove {
+          position: absolute;
+          width: 100%;
           height: 50%;
+          bottom: 0;
           a:hover > .material-icons {
             color: red;
           }
         }
         a > i.material-icons {
+
+          width: 100%;
+          height: 40%;
+          margin: 30% 0%;
+          position: absolute;
           text-align: center;
           vertical-align: middle;
           display: inline-block;
           color: #e0e0e0;
           font-size: 36px;
-          padding: 20px;
         }
       }
     }
