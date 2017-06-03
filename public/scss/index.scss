@@ -11,24 +11,22 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
   position: absolute;
   width: 100%;
   height: 100%;
-  // .add-wrap {
-  //   a.add-btn {
-  //     position: fixed;
-  //     float: right;
-  //     bottom: 30px;
-  //     right: 30px;
-  //     width: 50px;
-  //     height: auto;
-  //     background-color: orchid;
-  //     color: white;
-  //     font-size: 30px;
-  //     text-align: center;
-  //     padding: 20px;
-  //   }
-  //   a:hover {
-  //     background-color: red;
-  //   }
-  // }
+  .add-wrap {
+    position: fixed;
+    float: right;
+    bottom: 50px;
+    right: 60px;
+    a.add-btn:hover > i.material-icons {
+      color: red;
+    }
+    a.add-btn > i.material-icons {
+      color: blue;
+      font-size: 60px;
+      text-align: center;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.1);
+    }
+
+  }
   .title {
     width: 100%;
     margin: 0 auto;
@@ -95,7 +93,6 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
           }
         }
         a > i.material-icons {
-
           width: 100%;
           height: 40%;
           margin: 30% 0%;
