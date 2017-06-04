@@ -68,16 +68,30 @@ database = firebase.database();
 
 // data json 파일 열어 데이터 가져와서 데이터베이스에 넣기
 // jsonToDatabase();
-// function jsonToDatabase() {
-//   $.getJSON("./bookshelf.json", function(data) {
-//     // console.log(data);
-//     for (i=0; i < data.length; i++){
-//       firebase.database().ref('bookshelf/').push(
-//         data[i]
-//       )
-//     }
-//   })
-// }
+function jsonToDatabase() {
+  $.getJSON("./bookshelf.json", function(data) {
+    // console.log(data);
+    setTimeout(function() {
+      pushToFirebase(data, 0)
+    }, 1000)
+  })
+}
+
+function pushToFirebase(data, i) {
+  if(i == data.length) {
+    return
+  }
+  console.log("pushing : " + data[i])
+  firebase.database().ref('bookshelf/').push({
+    title: data[i]['title'],
+    publisher: data[i]['publisher'],
+    createDate: Number.MAX_SAFE_INTEGER - new Date().getTime()
+  });
+
+  setTimeout(function() {
+    pushToFirebase(data, i+1)
+  }, 1000)
+}
 
 loadBookList();
 
@@ -107,18 +121,8 @@ function saveData(key){
     bookshelfRef = database.ref('bookshelf/'+key)
     bookshelfRef.update({
       title : title,
-      publisher : publisher
+      publisher : publisher,
     });
-
-    // var originDataList = targetElement.getElementsByClassName('origin-data')
-    //
-    // var originTitle = originDataList[0];
-    // var originPublisher = originDataList[1];
-    //
-    // $(originTitle).text(title);
-    // $(originPublisher).text(publisher);
-
-
     var originDataList = targetElement.getElementsByClassName('origin-data');
     changeDisplayOfElementList(originDataList, 'block');
 
@@ -132,7 +136,8 @@ function saveData(key){
 
     bookshelfRef.push({
       title : title,
-      publisher : publisher
+      publisher : publisher,
+      createDate: Number.MAX_SAFE_INTEGER - new Date().getTime()
     });
     hideInputForm();
   }
