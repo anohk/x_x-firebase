@@ -62,7 +62,15 @@ function on_child_added(data) {
   "</ul>" +
   "</div>";
 
-  $('.bookshelf').append(html)
+  // 조회가 일어난 가장 마지막 데이터의 createDate의 값 보다
+  // 현재 추가된 데이터의 createDate의 값이 작다면
+  // 데이터를 가장 상위에서 보여준다. 
+  if ( lastCreateDate > createDate ){
+      $('.bookshelf').prepend(html)
+  } else {
+      $('.bookshelf').append(html)
+  }
+
 
   lastCreateDate = createDate;
   isLoading = false;
