@@ -23,8 +23,6 @@
       <div id="inputForm">
         <div class="book-container">
           <ul class="book-list">
-
-
             <li class="book-title">
               <input type="text" name="title" id="input-title" placeholder="Title">
             </li>
@@ -33,11 +31,11 @@
             </li>
             <button type="button" name="button" onclick="saveData()">save</button>
             <button type="button" name="button" onclick="hideInputForm()">cancel</button>
-
           </ul>
         </div>
       </div>
 
+      <div class="book-wrap"></div>
 
     </div>
 
@@ -66,11 +64,12 @@ firebase.initializeApp(config);
 // initialize database
 database = firebase.database();
 
+loadBookList();
+
 // data json 파일 열어 데이터 가져와서 데이터베이스에 넣기
 // jsonToDatabase();
 function jsonToDatabase() {
   $.getJSON("./bookshelf.json", function(data) {
-    // console.log(data);
     setTimeout(function() {
       pushToFirebase(data, 0)
     }, 1000)
@@ -93,10 +92,11 @@ function pushToFirebase(data, i) {
   }, 1000)
 }
 
-loadBookList();
+
 
 // 추가 버튼을 눌렀을 때 inputForm을 보여준다.
 function showInputForm() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
   document.getElementById('inputForm').style.display = 'block';
 }
 
@@ -108,9 +108,27 @@ function hideInputForm() {
   $('#input-publisher').val('');
 }
 
+function cancel(key) {
+  console.log('CANCEL');
+  var targetElement = document.getElementById(key);
+
+  var originDataList = targetElement.getElementsByClassName('origin-data');
+  changeDisplayOfElementList(originDataList, 'block');
+
+  var editDataList = targetElement.getElementsByClassName('editData');
+  changeDisplayOfElementList(editDataList, 'none');
+
+  var elementsList = document.getElementsByClassName('input-btn');
+  changeDisplayOfElementList(elementsList, 'none');
+
+  var element = document.getElementById('edit-remove');
+  element.style.visibility = 'visible';
+}
+
 
 function saveData(key){
   var bookshelfRef = database.ref('bookshelf');
+
   if ( !key == '' ){
     console.log('edit!');
     var targetElement = document.getElementById(key);
@@ -129,6 +147,9 @@ function saveData(key){
     var editDataList = targetElement.getElementsByClassName('editData');
     changeDisplayOfElementList(editDataList, 'none');
 
+    var elementsList = document.getElementsByClassName('input-btn');
+    changeDisplayOfElementList(elementsList, 'none')
+
   } else {
     console.log('create!');
     title = $('#input-title').val();
@@ -139,18 +160,11 @@ function saveData(key){
       publisher : publisher,
       createDate: Number.MAX_SAFE_INTEGER - new Date().getTime()
     });
+
     hideInputForm();
   }
-
-  var elementsList = document.getElementsByClassName('btn-input');
-  changeDisplayOfElementList(elementsList, 'none')
-
-
 }
 
-// TODO
-// 데이터베이스에서 데이터 삭제는 정상 작동함
-// 역순 정렬 때문에, 데이터가 삭제된 후 화면의 가장 상위 데이터가 삭제된 데이터의 다음 데이터가 아니다.
 function deleteData(key) {
   if ( !confirm('이 책을 지우시겠습니까?') ) {
     return;
@@ -173,15 +187,18 @@ function editData(key) {
   var editPublisher = editDataList['publisher']
   var originTitle = originDataList[0].textContent;
   var originPublisher = originDataList[1].textContent;
-  // console.log(originTitle);
-  // console.log(originPublisher);
+
   $(editTitle).val(originTitle);
   $(editPublisher).val(originPublisher);
 
-  var inputClassName = 'input-btn'
-  var inputClassList = targetElement.getElementsByClassName(inputClassName)
+
+  var inputClassList = targetElement.getElementsByClassName('input-btn')
   changeDisplayOfElementList(inputClassList, 'inline-block');
+
+  var element = document.getElementById('edit-remove');
+  element.style.visibility = 'hidden';
 }
+
 
 function changeDisplayOfElement(element, attr) {
   element.style.display = attr;
@@ -192,10 +209,5 @@ function changeDisplayOfElementList(list, attr) {
     changeDisplayOfElement(list[i], attr);
   }
 }
-
-
-
-
-
 </script>
 </html>

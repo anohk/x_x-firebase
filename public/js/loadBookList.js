@@ -44,7 +44,7 @@ function on_child_added(data) {
   var publisher = bookData.publisher;
   var html =
   "<div class=\"book-container\" id=\"" + key + "\">" +
-  "<div class=\"btns\">" +
+  "<div class=\"btns\" id=\"edit-remove\">" +
   "<div class=\"edit\">" +
   "<a onclick=\"editData('"+key+"')\"><i class=\"material-icons\">mode_edit</i></a>" +
   "</div>" +
@@ -58,21 +58,23 @@ function on_child_added(data) {
   "<li class=\"publisher origin-data\">" + publisher + "</li>" +
   "<input type=\"text\" name=\"publisher\" class=\"editData editPublisher\">"+
   "<button type=\"button\" name=\"button\" onclick=\"saveData('"+key+"')\" class=\"input-btn\">save</button>" +
-  "<button type=\"button\" name=\"button\" onclick=\"hideInputForm()\" class=\"input-btn\">cancel</button>"+
+  "<button type=\"button\" name=\"button\" onclick=\"cancel('"+key+"')\" class=\"input-btn\">cancel</button>"+
   "</ul>" +
   "</div>";
 
   // 조회가 일어난 가장 마지막 데이터의 createDate의 값 보다
   // 현재 추가된 데이터의 createDate의 값이 작다면
-  // 데이터를 가장 상위에서 보여준다. 
+  // 데이터를 가장 상위에서 보여준다.
   if ( lastCreateDate > createDate ){
-      $('.bookshelf').prepend(html)
+      $('.book-wrap').prepend(html);
+      console.log('PREPEND!!!!!!');
   } else {
-      $('.bookshelf').append(html)
+      $('.book-wrap').append(html);
+      lastCreateDate = createDate;
   }
 
 
-  lastCreateDate = createDate;
+
   isLoading = false;
 }
 
