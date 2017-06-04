@@ -62,8 +62,15 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
         padding: 40px 30px;
         box-sizing: border-box;
         width: 80%;
+        .editData {
+          display: none;
+        }
+        .input-btn {
+          display: none;
+          margin-top: 10px;
+        }
 
-        .book_name {
+        .book-title {
           font-size: 2.4em;
           font-weight: 900;
           padding-bottom: 26px;
@@ -76,6 +83,7 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
           font-weight: normal;
           color: #707070;
         }
+
       }
       .btns {
         position: absolute;

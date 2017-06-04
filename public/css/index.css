@@ -90,7 +90,16 @@ ul, ol {
   width: 80%;
 }
 
-.container .bookshelf .book-container .book-list .book_name {
+.container .bookshelf .book-container .book-list .editData {
+  display: none;
+}
+
+.container .bookshelf .book-container .book-list .input-btn {
+  display: none;
+  margin-top: 10px;
+}
+
+.container .bookshelf .book-container .book-list .book-title {
   font-size: 2.4em;
   font-weight: 900;
   padding-bottom: 26px;

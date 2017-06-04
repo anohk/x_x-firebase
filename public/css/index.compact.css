@@ -28,7 +28,11 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
 
 .container .bookshelf .book-container .book-list { padding: 40px 30px; box-sizing: border-box; width: 80%; }
 
-.container .bookshelf .book-container .book-list .book_name { font-size: 2.4em; font-weight: 900; padding-bottom: 26px; color: #303030; word-break: keep-all; line-height: 1.3em; }
+.container .bookshelf .book-container .book-list .editData { display: none; }
+
+.container .bookshelf .book-container .book-list .input-btn { display: none; margin-top: 10px; }
+
+.container .bookshelf .book-container .book-list .book-title { font-size: 2.4em; font-weight: 900; padding-bottom: 26px; color: #303030; word-break: keep-all; line-height: 1.3em; }
 
 .container .bookshelf .book-container .book-list .publisher { font-size: 1.5em; font-weight: normal; color: #707070; }
 

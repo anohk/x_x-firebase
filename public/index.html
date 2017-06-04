@@ -25,19 +25,18 @@
           <ul class="book-list">
 
 
-            <li class="book_name">
+            <li class="book-title">
               <input type="text" name="title" id="input-title" placeholder="Title">
             </li>
             <li class="publisher">
               <input type="text" name="publisher" id="input-publisher" placeholder="Publisher">
             </li>
-            <button type="button" name="button" onclick="saveData()" >save</button>
-            <button type="button" name="button" onclick="hideInputForm()" >cancel</button>
+            <button type="button" name="button" onclick="saveData()">save</button>
+            <button type="button" name="button" onclick="hideInputForm()">cancel</button>
 
           </ul>
         </div>
       </div>
-
 
 
     </div>
@@ -53,7 +52,7 @@
 <script src="js/loadBookList.js"></script>
 
 <script>
-var database;
+var database, key;
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyAWBXLcQrIbsYXf3Q4kqbjxx4wk-PP3I9E",
@@ -87,37 +86,106 @@ function showInputForm() {
   document.getElementById('inputForm').style.display = 'block';
 }
 
-// 취소 버튼을 눌렀을 때 inputForm을 숨긴다.
+// 취소 버튼을 눌렀을 때 inputForm을 숨기고 입력한 데이터 초기화.
 function hideInputForm() {
-  document.getElementById('inputForm').style.display = 'none';
+  var element = document.getElementById('inputForm');
+  changeDisplayOfElement(element, 'none')
   $('#input-title').val('');
   $('#input-publisher').val('');
 }
 
 
-function saveData(){
-  title = $('#input-title').val();
-  publisher = $('#input-publisher').val();
-  console.log(title);
-  console.log(publisher);
+function saveData(key){
   var bookshelfRef = database.ref('bookshelf');
-  bookshelfRef.push({
-    title : title,
-    publisher : publisher
-  });
-  hideInputForm();
+  if ( !key == '' ){
+    console.log('edit!');
+    var targetElement = document.getElementById(key);
+    var editDataList = targetElement.getElementsByClassName('editData')
+    var title = $(editDataList[0]).val();
+    var publisher = $(editDataList[1]).val();
+
+    bookshelfRef = database.ref('bookshelf/'+key)
+    bookshelfRef.update({
+      title : title,
+      publisher : publisher
+    });
+
+    // var originDataList = targetElement.getElementsByClassName('origin-data')
+    //
+    // var originTitle = originDataList[0];
+    // var originPublisher = originDataList[1];
+    //
+    // $(originTitle).text(title);
+    // $(originPublisher).text(publisher);
+
+
+    var originDataList = targetElement.getElementsByClassName('origin-data');
+    changeDisplayOfElementList(originDataList, 'block');
+
+    var editDataList = targetElement.getElementsByClassName('editData');
+    changeDisplayOfElementList(editDataList, 'none');
+
+  } else {
+    console.log('create!');
+    title = $('#input-title').val();
+    publisher = $('#input-publisher').val();
+
+    bookshelfRef.push({
+      title : title,
+      publisher : publisher
+    });
+    hideInputForm();
+  }
+
+  var elementsList = document.getElementsByClassName('btn-input');
+  changeDisplayOfElementList(elementsList, 'none')
+
+
 }
 
 // TODO
 // 데이터베이스에서 데이터 삭제는 정상 작동함
 // 역순 정렬 때문에, 데이터가 삭제된 후 화면의 가장 상위 데이터가 삭제된 데이터의 다음 데이터가 아니다.
-// 지운 데이터가 다시 표시됨. 리프레시하면 없어짐.
 function deleteData(key) {
   if ( !confirm('이 책을 지우시겠습니까?') ) {
     return;
   }
   var bookshelfRef = database.ref('bookshelf/'+key)
   bookshelfRef.remove();
+  $('#'+key).remove();
+}
+
+function editData(key) {
+  var targetElement = document.getElementById(key);
+
+  var originDataList = targetElement.getElementsByClassName('origin-data');
+  changeDisplayOfElementList(originDataList, 'none');
+
+  var editDataList = targetElement.getElementsByClassName('editData');
+  changeDisplayOfElementList(editDataList, 'block');
+
+  var editTitle = editDataList['title']
+  var editPublisher = editDataList['publisher']
+  var originTitle = originDataList[0].textContent;
+  var originPublisher = originDataList[1].textContent;
+  // console.log(originTitle);
+  // console.log(originPublisher);
+  $(editTitle).val(originTitle);
+  $(editPublisher).val(originPublisher);
+
+  var inputClassName = 'input-btn'
+  var inputClassList = targetElement.getElementsByClassName(inputClassName)
+  changeDisplayOfElementList(inputClassList, 'inline-block');
+}
+
+function changeDisplayOfElement(element, attr) {
+  element.style.display = attr;
+}
+
+function changeDisplayOfElementList(list, attr) {
+  for (i=0; i < list.length; i++){
+    changeDisplayOfElement(list[i], attr);
+  }
 }
 
 
