@@ -19,12 +19,34 @@
     </div>
 
     <div class="bookshelf">
+
+      <div id="inputForm">
+        <div class="book-container">
+          <ul class="book-list">
+
+
+            <li class="book_name">
+              <input type="text" name="title" id="input-title" placeholder="Title">
+            </li>
+            <li class="publisher">
+              <input type="text" name="publisher" id="input-publisher" placeholder="Publisher">
+            </li>
+            <button type="button" name="button" onclick="saveData()" >save</button>
+            <button type="button" name="button" onclick="hideInputForm()" >cancel</button>
+
+          </ul>
+        </div>
+      </div>
+
+
+
     </div>
 
     <div class="add-wrap">
-        <a class="add-btn"><i class="material-icons">add_circle</i></a>
+      <a class="add-btn" onclick="showInputForm()"><i class="material-icons">add_circle</i></a>
     </div>
   </div>
+
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
@@ -59,6 +81,48 @@ database = firebase.database();
 // }
 
 loadBookList();
+
+// 추가 버튼을 눌렀을 때 inputForm을 보여준다.
+function showInputForm() {
+  document.getElementById('inputForm').style.display = 'block';
+}
+
+// 취소 버튼을 눌렀을 때 inputForm을 숨긴다.
+function hideInputForm() {
+  document.getElementById('inputForm').style.display = 'none';
+  $('#input-title').val('');
+  $('#input-publisher').val('');
+}
+
+
+function saveData(){
+  title = $('#input-title').val();
+  publisher = $('#input-publisher').val();
+  console.log(title);
+  console.log(publisher);
+  var bookshelfRef = database.ref('bookshelf');
+  bookshelfRef.push({
+    title : title,
+    publisher : publisher
+  });
+  hideInputForm();
+}
+
+// TODO
+// 데이터베이스에서 데이터 삭제는 정상 작동함
+// 역순 정렬 때문에, 데이터가 삭제된 후 화면의 가장 상위 데이터가 삭제된 데이터의 다음 데이터가 아니다.
+// 지운 데이터가 다시 표시됨. 리프레시하면 없어짐.
+function deleteData(key) {
+  if ( !confirm('이 책을 지우시겠습니까?') ) {
+    return;
+  }
+  var bookshelfRef = database.ref('bookshelf/'+key)
+  bookshelfRef.remove();
+}
+
+
+
+
 
 </script>
 </html>
