@@ -59,17 +59,18 @@ function on_child_added(data) {
     return;
   }
 
+  var key = data.key
   var bookData = data.val();
   var title = bookData.title;
   var publisher = bookData.publisher;
   var html =
-  "<div class=\"book-container\">" +
+  "<div class=\"book-container\" id=\"" + key + "\">" +
   "<div class=\"btns\">" +
   "<div class=\"edit\">" +
-  "<a><i class=\"material-icons\">add</i></a>" +
+  "<a><i class=\"material-icons\">mode_edit</i></a>" +
   "</div>" +
-  "<div class=\"remove\">" +
-  "<a><i class=\"material-icons\">remove</i></a>" +
+  "<div class=\"remove\" >" +
+  "<a onclick=\"deleteData('"+key+"')\"><i class=\"material-icons\">delete</i></a>" +
   "</div>" +
   "</div>" +
   "<ul class=\"book-list\">" +
