@@ -35,15 +35,20 @@ ul, ol {
   right: 60px;
 }
 
-.container .add-wrap a.add-btn:hover > i.material-icons {
-  color: red;
-}
-
 .container .add-wrap a.add-btn > i.material-icons {
-  color: blue;
+  color: #448AFF;
   font-size: 60px;
   text-align: center;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container .add-wrap a.add-btn:hover > i.material-icons {
+  color: #2979FF;
+  cursor: pointer;
+}
+
+.container .add-wrap a.add-btn:active > i.material-icons {
+  color: #2962FF;
 }
 
 .container .title {
@@ -64,6 +69,10 @@ ul, ol {
   margin: 0 auto;
   margin-top: 40px;
   background-color: #efefef;
+}
+
+.container .bookshelf #inputForm {
+  display: none;
 }
 
 .container .bookshelf .book-container {
@@ -98,41 +107,50 @@ ul, ol {
 
 .container .bookshelf .book-container .btns {
   position: absolute;
-  margin-left: 90%;
-  width: 10%;
+  box-sizing: border-box;
+  margin-left: 84%;
+  width: 16%;
   height: 100%;
 }
 
 .container .bookshelf .book-container .btns .edit {
   position: absolute;
-  width: 100%;
-  height: 50%;
-  top: 0;
+  width: 50%;
+  height: 100%;
 }
 
 .container .bookshelf .book-container .btns .edit a:hover > .material-icons {
-  color: blue;
+  color: #666;
+  cursor: pointer;
+}
+
+.container .bookshelf .book-container .btns .edit a:active > .material-icons {
+  color: #434343;
 }
 
 .container .bookshelf .book-container .btns .remove {
   position: absolute;
-  width: 100%;
-  height: 50%;
-  bottom: 0;
+  right: 0px;
+  width: 50%;
+  height: 100%;
 }
 
 .container .bookshelf .book-container .btns .remove a:hover > .material-icons {
-  color: red;
+  color: #FF5252;
+  cursor: pointer;
+}
+
+.container .bookshelf .book-container .btns .remove a:active > .material-icons {
+  color: #FF2424;
+  cursor: pointer;
 }
 
 .container .bookshelf .book-container .btns a > i.material-icons {
   width: 100%;
-  height: 40%;
-  margin: 30% 0%;
   position: absolute;
   text-align: center;
-  vertical-align: middle;
   display: inline-block;
   color: #e0e0e0;
   font-size: 36px;
+  bottom: 20px;
 }

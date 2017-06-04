@@ -10,15 +10,19 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
 
 .container .add-wrap { position: fixed; float: right; bottom: 50px; right: 60px; }
 
-.container .add-wrap a.add-btn:hover > i.material-icons { color: red; }
+.container .add-wrap a.add-btn > i.material-icons { color: #448AFF; font-size: 60px; text-align: center; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1); }
 
-.container .add-wrap a.add-btn > i.material-icons { color: blue; font-size: 60px; text-align: center; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1); }
+.container .add-wrap a.add-btn:hover > i.material-icons { color: #2979FF; cursor: pointer; }
+
+.container .add-wrap a.add-btn:active > i.material-icons { color: #2962FF; }
 
 .container .title { width: 100%; margin: 0 auto; }
 
 .container .title h2 { text-align: center; font-size: 2.6em; padding-top: 40px; }
 
 .container .bookshelf { padding-top: 20px; width: 70%; height: 100%; margin: 0 auto; margin-top: 40px; background-color: #efefef; }
+
+.container .bookshelf #inputForm { display: none; }
 
 .container .bookshelf .book-container { position: relative; background-color: white; margin-bottom: 26px; width: 100%; height: auto; box-shadow: 0 8px 14px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1); }
 
@@ -28,14 +32,18 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
 
 .container .bookshelf .book-container .book-list .publisher { font-size: 1.5em; font-weight: normal; color: #707070; }
 
-.container .bookshelf .book-container .btns { position: absolute; margin-left: 90%; width: 10%; height: 100%; }
+.container .bookshelf .book-container .btns { position: absolute; box-sizing: border-box; margin-left: 84%; width: 16%; height: 100%; }
 
-.container .bookshelf .book-container .btns .edit { position: absolute; width: 100%; height: 50%; top: 0; }
+.container .bookshelf .book-container .btns .edit { position: absolute; width: 50%; height: 100%; }
 
-.container .bookshelf .book-container .btns .edit a:hover > .material-icons { color: blue; }
+.container .bookshelf .book-container .btns .edit a:hover > .material-icons { color: #666; cursor: pointer; }
 
-.container .bookshelf .book-container .btns .remove { position: absolute; width: 100%; height: 50%; bottom: 0; }
+.container .bookshelf .book-container .btns .edit a:active > .material-icons { color: #434343; }
 
-.container .bookshelf .book-container .btns .remove a:hover > .material-icons { color: red; }
+.container .bookshelf .book-container .btns .remove { position: absolute; right: 0px; width: 50%; height: 100%; }
 
-.container .bookshelf .book-container .btns a > i.material-icons { width: 100%; height: 40%; margin: 30% 0%; position: absolute; text-align: center; vertical-align: middle; display: inline-block; color: #e0e0e0; font-size: 36px; }
+.container .bookshelf .book-container .btns .remove a:hover > .material-icons { color: #FF5252; cursor: pointer; }
+
+.container .bookshelf .book-container .btns .remove a:active > .material-icons { color: #FF2424; cursor: pointer; }
+
+.container .bookshelf .book-container .btns a > i.material-icons { width: 100%; position: absolute; text-align: center; display: inline-block; color: #e0e0e0; font-size: 36px; bottom: 20px; }
