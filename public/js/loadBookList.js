@@ -54,7 +54,7 @@ function on_child_added(data) {
   "</div>" +
   "<ul class=\"book-list\">" +
   "<li class=\"book-title origin-data\">" + title + "</li>" +
-  "<input type=\"text\" name=\"title\" class=\"editData editTitle\">"+
+  "<input type=\"text\" name=\"title\" class=\"editData editTitle\" autofocus>"+
   "<li class=\"publisher origin-data\">" + publisher + "</li>" +
   "<input type=\"text\" name=\"publisher\" class=\"editData editPublisher\">"+
   "<button type=\"button\" name=\"button\" onclick=\"saveData('"+key+"')\" class=\"input-btn\">save</button>" +
