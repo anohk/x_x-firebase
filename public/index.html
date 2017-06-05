@@ -150,6 +150,9 @@ function saveData(key){
     var elementsList = document.getElementsByClassName('input-btn');
     changeDisplayOfElementList(elementsList, 'none')
 
+    var element = document.getElementById('edit-remove');
+    element.style.visibility = 'visible';
+
   } else {
     console.log('create!');
     title = $('#input-title').val();
