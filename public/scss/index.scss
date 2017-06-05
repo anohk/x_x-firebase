@@ -1,12 +1,9 @@
-html, body { width: 100%; height: 100%; -webkit-font-smoothing: antialiased; background-color: #efefef;}
+@import "common";
 
-html { box-sizing: border-box; font-size: 14px; font-family:Helvetica,'Apple SD Gothic Neo',Sans-serif; }
-
-body,p,h2 { margin: 0; padding: 0; }
-
-ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
-
-
+::-webkit-input-placeholder { /* Chrome */
+  color: #00E676;
+  opacity: 0.8;
+}
 .container {
   position: absolute;
   width: 100%;
@@ -65,29 +62,60 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
         .editData {
           display: none;
         }
+        .editTitle {
+          @extend %title;
+          cursor: auto;
+          color: #999;
+          &:hover {
+            color: #00E676;
+          }
+        }
+        .editPublisher {
+          cursor: auto;
+          color: #999;
+          @extend %publisher;
+          &:hover {
+            color: #00E676;
+          }
+        }
         .input-btn {
+          cursor: pointer;
           display: none;
-          margin-top: 10px;
+          width: auto;
+          height: 30px;
+          padding: 0 20px 30px;
+          margin-left: 10px;
+          float: right;
+          font-size: 1.3em;
+          font-weight: bold;
+          background-color: white;
         }
 
         .book-title {
-          font-size: 2.4em;
-          font-weight: 900;
-          padding-bottom: 26px;
+          @extend %title;
           color: #303030;
-          word-break: keep-all;
-          line-height: 1.3em;
+          input#input-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            // padding-bottom: 20px;
+            word-break: keep-all;
+            line-height: 1.3em;
+            color: #00E676;
+          }
         }
         .publisher {
-          font-size: 1.5em;
-          font-weight: normal;
+          @extend %publisher;
           color: #707070;
+          input#input-publisher {
+            font-size: 1.5em;
+            font-weight: normal;
+            color: #00E676;
+          }
         }
 
       }
       .btns {
         position: absolute;
-
         box-sizing: border-box;
         margin-left: 84%;
         width: 16%;
@@ -123,12 +151,10 @@ ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
           width: 100%;
           position: absolute;
           text-align: center;
-          // vertical-align: middle;
           display: inline-block;
           color: #e0e0e0;
           font-size: 36px;
           bottom: 20px;
-          // padding: 40px 0px;
         }
       }
     }

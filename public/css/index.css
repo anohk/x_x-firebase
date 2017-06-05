@@ -22,6 +22,40 @@ ul, ol {
   list-style-type: none;
 }
 
+input, button {
+  border: none;
+}
+
+input:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+button:focus {
+  outline-color: transparent;
+  outline-style: none;
+  outline: none !important;
+}
+
+.container .bookshelf .book-container .book-list .editTitle, .container .bookshelf .book-container .book-list .book-title {
+  font-size: 2.4em;
+  font-weight: 900;
+  padding-bottom: 26px;
+  word-break: keep-all;
+  line-height: 1.3em;
+}
+
+.container .bookshelf .book-container .book-list .editPublisher, .container .bookshelf .book-container .book-list .publisher {
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome */
+  color: #00E676;
+  opacity: 0.8;
+}
+
 .container {
   position: absolute;
   width: 100%;
@@ -94,24 +128,57 @@ ul, ol {
   display: none;
 }
 
+.container .bookshelf .book-container .book-list .editTitle {
+  cursor: auto;
+  color: #999;
+}
+
+.container .bookshelf .book-container .book-list .editTitle:hover {
+  color: #00E676;
+}
+
+.container .bookshelf .book-container .book-list .editPublisher {
+  cursor: auto;
+  color: #999;
+}
+
+.container .bookshelf .book-container .book-list .editPublisher:hover {
+  color: #00E676;
+}
+
 .container .bookshelf .book-container .book-list .input-btn {
+  cursor: pointer;
   display: none;
-  margin-top: 10px;
+  width: auto;
+  height: 30px;
+  padding: 0 20px 30px;
+  margin-left: 10px;
+  float: right;
+  font-size: 1.3em;
+  font-weight: bold;
+  background-color: white;
 }
 
 .container .bookshelf .book-container .book-list .book-title {
-  font-size: 2.4em;
-  font-weight: 900;
-  padding-bottom: 26px;
   color: #303030;
+}
+
+.container .bookshelf .book-container .book-list .book-title input#input-title {
+  font-size: 1.5em;
+  font-weight: bold;
   word-break: keep-all;
   line-height: 1.3em;
+  color: #00E676;
 }
 
 .container .bookshelf .book-container .book-list .publisher {
+  color: #707070;
+}
+
+.container .bookshelf .book-container .book-list .publisher input#input-publisher {
   font-size: 1.5em;
   font-weight: normal;
-  color: #707070;
+  color: #00E676;
 }
 
 .container .bookshelf .book-container .btns {
