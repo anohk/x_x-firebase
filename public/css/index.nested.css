@@ -21,17 +21,6 @@ ul, ol {
 input {
   border: none; }
 
-.container .bookshelf .book-container .btns .add-save, .container .bookshelf .book-container .btns .add-cancel {
-  position: absolute;
-  border: none;
-  color: white;
-  width: 100%;
-  height: 50%;
-  margin: 0 auto;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block; }
-
 input:focus {
   outline-color: transparent;
   outline-style: none; }
@@ -54,6 +43,17 @@ button:focus {
   outline: none !important;
   cursor: pointer; }
 
+.container .bookshelf .book-container .btns .add-save, .container .bookshelf .book-container .btns .add-cancel {
+  position: absolute;
+  border: none;
+  color: white;
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block; }
+
 .container .bookshelf .book-container .book-list .editTitle, .container .bookshelf .book-container .book-list .book-title {
   font-size: 2.4em;
   font-weight: 900;
@@ -70,6 +70,9 @@ input::-webkit-input-placeholder {
 
 input:hover::-webkit-input-placeholder {
   color: #00E676; }
+
+#save-cancel {
+  display: none; }
 
 .container {
   position: absolute;
@@ -98,25 +101,25 @@ input:hover::-webkit-input-placeholder {
       font-size: 2.6em;
       padding-top: 40px; }
   .container .bookshelf {
-    padding-top: 20px;
     width: 70%;
     height: 100%;
     margin: 0 auto;
     margin-top: 40px;
+    padding-top: 20px;
     background-color: #efefef; }
     .container .bookshelf #inputForm {
       display: none; }
     .container .bookshelf .book-container {
       position: relative;
-      background-color: white;
-      margin-bottom: 26px;
       width: 100%;
       height: auto;
+      margin-bottom: 26px;
+      background-color: white;
       box-shadow: 0 8px 14px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1); }
       .container .bookshelf .book-container .book-list {
+        width: 80%;
         padding: 40px 30px;
-        box-sizing: border-box;
-        width: 80%; }
+        box-sizing: border-box; }
         .container .bookshelf .book-container .book-list .editData {
           display: none; }
         .container .bookshelf .book-container .book-list .editTitle {
@@ -143,12 +146,10 @@ input:hover::-webkit-input-placeholder {
             font-weight: normal; }
       .container .bookshelf .book-container .btns {
         position: absolute;
-        box-sizing: border-box;
-        margin-left: 84%;
         width: 16%;
-        height: 100%; }
-        .container .bookshelf .book-container .btns #save-cancel {
-          display: none; }
+        height: 100%;
+        margin-left: 84%;
+        box-sizing: border-box; }
         .container .bookshelf .book-container .btns .edit {
           position: absolute;
           width: 50%;
@@ -160,9 +161,9 @@ input:hover::-webkit-input-placeholder {
             color: #434343; }
         .container .bookshelf .book-container .btns .remove {
           position: absolute;
-          right: 0px;
           width: 50%;
-          height: 100%; }
+          height: 100%;
+          right: 0px; }
           .container .bookshelf .book-container .btns .remove a:hover > .material-icons {
             color: #FF5252;
             cursor: pointer; }

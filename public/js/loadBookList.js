@@ -29,6 +29,8 @@ function loadBookList(){
   bookshelfRef.on('child_changed', on_child_changed);
 }
 
+
+// 데이터베이스에 데이터가 추가되는 이벤트가 있을 때 동작
 function on_child_added(data) {
 
   // 데이터 중복 체크
@@ -79,17 +81,15 @@ function on_child_added(data) {
   // 데이터를 가장 상위에서 보여준다.
   if ( lastCreateDate > createDate ){
     $('.book-wrap').prepend(html);
-    console.log('PREPEND!!!!!!');
   } else {
     $('.book-wrap').append(html);
     lastCreateDate = createDate;
   }
-
-
-
   isLoading = false;
 }
 
+
+// 데이터베이스에 데이터가 수정되는 이벤트가 있을 때 동작
 function on_child_changed(data) {
   var key = data.key;
   var data = data.val();

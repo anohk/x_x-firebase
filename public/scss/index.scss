@@ -1,11 +1,9 @@
 @import "common";
 
-input::-webkit-input-placeholder {
-  color: #999;
-}
-input:hover::-webkit-input-placeholder {
-  color: #00E676;
-}
+input::-webkit-input-placeholder { color: #999; }
+input:hover::-webkit-input-placeholder { color: #00E676; }
+#save-cancel { display: none; }
+
 .container {
   position: absolute;
   width: 100%;
@@ -15,7 +13,6 @@ input:hover::-webkit-input-placeholder {
     float: right;
     bottom: 50px;
     right: 60px;
-
     a.add-btn > i.material-icons {
       color: #448AFF;
       font-size: 60px;
@@ -40,27 +37,26 @@ input:hover::-webkit-input-placeholder {
     }
   }
   .bookshelf {
-    padding-top: 20px;
     width: 70%;
     height: 100%;
     margin: 0 auto;
     margin-top: 40px;
+    padding-top: 20px;
     background-color: #efefef;
     #inputForm {
       display: none;
     }
     .book-container {
       position: relative;
-      background-color: white;
-      // margin: 0 auto 26px;
-      margin-bottom: 26px;
       width: 100%;
       height: auto;
+      margin-bottom: 26px;
+      background-color: white;
       box-shadow: 0 8px 14px rgba(0,0,0,0.1), 0 8px 8px rgba(0,0,0,0.1);
       .book-list {
+        width: 80%;
         padding: 40px 30px;
         box-sizing: border-box;
-        width: 80%;
         .editData {
           display: none;
         }
@@ -98,18 +94,13 @@ input:hover::-webkit-input-placeholder {
             font-weight: normal;
           }
         }
-
       }
       .btns {
         position: absolute;
-        box-sizing: border-box;
-        margin-left: 84%;
         width: 16%;
         height: 100%;
-        #save-cancel {
-          display: none;
-        }
-
+        margin-left: 84%;
+        box-sizing: border-box;
         .edit {
           position: absolute;
           width: 50%;
@@ -124,9 +115,9 @@ input:hover::-webkit-input-placeholder {
         }
         .remove {
           position: absolute;
-          right: 0px;
           width: 50%;
           height: 100%;
+          right: 0px;
           a:hover > .material-icons {
             color: #FF5252;
             cursor: pointer;
@@ -145,13 +136,11 @@ input:hover::-webkit-input-placeholder {
           font-size: 36px;
           bottom: 20px;
         }
-
         .add-save {
           @extend %add-btn;
           background-color: #B2EBF2;
           &:hover {
             background-color: #80DEEA;
-
           }
           &:active {
             background-color: #4DD0E1;

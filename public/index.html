@@ -19,7 +19,7 @@
     </div>
 
     <div class="bookshelf">
-
+      <!-- add new item -->
       <div id="inputForm">
         <div class="book-container">
           <!-- save, cancel btns -->
@@ -42,10 +42,10 @@
               <input type="text" name="publisher" id="input-publisher" placeholder="Publisher">
             </li>
           </ul>
-
         </div>
       </div>
 
+      <!-- book list -->
       <div class="book-wrap"></div>
 
     </div>
@@ -54,11 +54,12 @@
       <a class="add-btn" onclick="showInputForm()"><i class="material-icons">add_circle</i></a>
     </div>
   </div>
-
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
 <script src="js/loadBookList.js"></script>
+<script src="js/function.js"></script>
+
 
 <script>
 var database, key;
@@ -91,7 +92,6 @@ function pushToFirebase(data, i) {
   if(i == data.length) {
     return
   }
-  console.log("pushing : " + data[i])
   firebase.database().ref('bookshelf/').push({
     title: data[i]['title'],
     publisher: data[i]['publisher'],
@@ -103,134 +103,5 @@ function pushToFirebase(data, i) {
   }, 1000)
 }
 
-
-
-// 추가 버튼을 눌렀을 때 inputForm을 보여준다.
-function showInputForm() {
-  $("html, body").animate({ scrollTop: 0 }, "slow");
-  document.getElementById('inputForm').style.display = 'block';
-}
-
-// 취소 버튼을 눌렀을 때 inputForm을 숨기고 입력한 데이터 초기화.
-function hideInputForm() {
-  var element = document.getElementById('inputForm');
-  changeDisplayOfElement(element, 'none')
-  $('#input-title').val('');
-  $('#input-publisher').val('');
-}
-
-
-// EDIT DATA
-function editData(key) {
-  var targetElement = document.getElementById(key);
-
-  var originDataList = targetElement.getElementsByClassName('origin-data');
-  changeDisplayOfElementList(originDataList, 'none');
-
-  var editDataList = targetElement.getElementsByClassName('editData');
-  changeDisplayOfElementList(editDataList, 'block');
-
-  var editTitle = editDataList['title']
-  var editPublisher = editDataList['publisher']
-  var originTitle = originDataList[0].textContent;
-  var originPublisher = originDataList[1].textContent;
-
-  $(editTitle).val(originTitle);
-  $(editPublisher).val(originPublisher);
-  var element = document.getElementById('save-cancel');
-  changeDisplayOfElement(element, 'inline-block');
-
-  var element = document.getElementById('edit-remove');
-  changeDisplayOfElement(element, 'none');
-  // element.style.visibility = 'hidden';
-}
-
-
-// DELETE DATA
-function deleteData(key) {
-  if ( !confirm('이 책을 지우시겠습니까?') ) {
-    return;
-  }
-  var bookshelfRef = database.ref('bookshelf/'+key)
-  bookshelfRef.remove();
-  $('#'+key).remove();
-}
-
-
-
-function saveData(key){
-  var bookshelfRef = database.ref('bookshelf');
-
-  if ( !key == '' ){
-    console.log('edit!');
-    var targetElement = document.getElementById(key);
-    var editDataList = targetElement.getElementsByClassName('editData')
-    var title = $(editDataList[0]).val();
-    var publisher = $(editDataList[1]).val();
-
-    bookshelfRef = database.ref('bookshelf/'+key)
-    bookshelfRef.update({
-      title : title,
-      publisher : publisher,
-    });
-    var originDataList = targetElement.getElementsByClassName('origin-data');
-    changeDisplayOfElementList(originDataList, 'block');
-
-    var editDataList = targetElement.getElementsByClassName('editData');
-    changeDisplayOfElementList(editDataList, 'none');
-
-    var element = document.getElementById('save-cancel');
-    changeDisplayOfElement(element, 'none');
-
-    var element = document.getElementById('edit-remove');
-    changeDisplayOfElement(element, 'inline-block');
-
-  } else {
-    console.log('create!');
-    title = $('#input-title').val();
-    publisher = $('#input-publisher').val();
-
-    bookshelfRef.push({
-      title : title,
-      publisher : publisher,
-      createDate: Number.MAX_SAFE_INTEGER - new Date().getTime()
-    });
-
-    hideInputForm();
-  }
-}
-
-function cancel(key) {
-  console.log('CANCEL');
-  var targetElement = document.getElementById(key);
-
-  var originDataList = targetElement.getElementsByClassName('origin-data');
-  changeDisplayOfElementList(originDataList, 'block');
-
-  var editDataList = targetElement.getElementsByClassName('editData');
-  changeDisplayOfElementList(editDataList, 'none');
-
-
-  var element = document.getElementById('save-cancel');
-  // changeDisplayOfElement(element, 'none');
-
-
-  var element = document.getElementById('edit-remove');
-  changeDisplayOfElement(element, 'inline-block');
-}
-
-
-
-
-
-function changeDisplayOfElement(element, attr) {
-  element.style.display = attr;
-}
-
-function changeDisplayOfElementList(list, attr) {
-  for (i=0; i < list.length; i++){
-    changeDisplayOfElement(list[i], attr);
-  }
-}
 </script>
 </html>
