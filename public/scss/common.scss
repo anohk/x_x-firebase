@@ -2,16 +2,44 @@ html, body { width: 100%; height: 100%; -webkit-font-smoothing: antialiased; bac
 html { box-sizing: border-box; font-size: 14px; font-family:Helvetica,'Apple SD Gothic Neo',Sans-serif; }
 body,p,h2 { margin: 0; padding: 0; }
 ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
-input, button { border:none; }
+input { border:none;}
+
+%add-btn {
+  position: absolute;
+  border: none;
+  color: white;
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 input:focus {
   outline-color: transparent;
   outline-style: none;
+}
 
+button {
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  font-weight: normal;
+  background-color: rgba(0,0,0,0);
+  height: 100%;
+  width: 100%;
+}
+
+
+button:hover {
+  cursor: pointer;
 }
 button:focus {
   outline-color: transparent;
   outline-style: none;
   outline: none !important;
+  cursor: pointer;
 }
 
 

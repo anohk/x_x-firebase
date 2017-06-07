@@ -1,8 +1,10 @@
 @import "common";
 
-::-webkit-input-placeholder { /* Chrome */
+input::-webkit-input-placeholder {
+  color: #999;
+}
+input:hover::-webkit-input-placeholder {
   color: #00E676;
-  opacity: 0.8;
 }
 .container {
   position: absolute;
@@ -78,38 +80,22 @@
             color: #00E676;
           }
         }
-        .input-btn {
-          cursor: pointer;
-          display: none;
-          width: auto;
-          height: 30px;
-          padding: 0 20px 30px;
-          margin-left: 10px;
-          float: right;
-          font-size: 1.3em;
-          font-weight: bold;
-          background-color: white;
-        }
-
         .book-title {
           @extend %title;
           color: #303030;
           input#input-title {
-            font-size: 1.5em;
+            font-size: 1.4em;
             font-weight: bold;
-            // padding-bottom: 20px;
             word-break: keep-all;
-            line-height: 1.3em;
-            color: #00E676;
+            line-height: 1.2em;
           }
         }
         .publisher {
           @extend %publisher;
           color: #707070;
           input#input-publisher {
-            font-size: 1.5em;
+            font-size: 1.3em;
             font-weight: normal;
-            color: #00E676;
           }
         }
 
@@ -120,6 +106,10 @@
         margin-left: 84%;
         width: 16%;
         height: 100%;
+        #save-cancel {
+          display: none;
+        }
+
         .edit {
           position: absolute;
           width: 50%;
@@ -130,7 +120,6 @@
           }
           a:active > .material-icons {
             color: #434343;
-
           }
         }
         .remove {
@@ -155,6 +144,29 @@
           color: #e0e0e0;
           font-size: 36px;
           bottom: 20px;
+        }
+
+        .add-save {
+          @extend %add-btn;
+          background-color: #B2EBF2;
+          &:hover {
+            background-color: #80DEEA;
+
+          }
+          &:active {
+            background-color: #4DD0E1;
+          }
+        }
+        .add-cancel {
+          @extend %add-btn;
+          background-color: #FF8080;
+          bottom: 0px;
+          &:hover {
+            background-color: #FF6565;
+          }
+          &:active {
+            background-color: #FF4343;
+          }
         }
       }
     }

@@ -18,14 +18,27 @@ ul, ol {
   padding: 0px;
   list-style-type: none; }
 
-input, button {
+input {
   border: none; }
 
 input:focus {
   outline-color: transparent;
   outline-style: none; }
 
+button {
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  font-weight: normal;
+  background-color: transparent;
+  height: 100%;
+  width: 100%; }
+
+button:hover {
+  cursor: pointer; }
+
 button:focus {
   outline-color: transparent;
   outline-style: none;
-  outline: none !important; }
+  outline: none !important;
+  cursor: pointer; }

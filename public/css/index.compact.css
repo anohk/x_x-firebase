@@ -6,17 +6,25 @@ body, p, h2 { margin: 0; padding: 0; }
 
 ul, ol { margin: 0px; padding: 0px; list-style-type: none; }
 
-input, button { border: none; }
+input { border: none; }
+
+.container .bookshelf .book-container .btns .add-save, .container .bookshelf .book-container .btns .add-cancel { position: absolute; border: none; color: white; width: 100%; height: 50%; margin: 0 auto; text-align: center; text-decoration: none; display: inline-block; }
 
 input:focus { outline-color: transparent; outline-style: none; }
 
-button:focus { outline-color: transparent; outline-style: none; outline: none !important; }
+button { border: none; color: white; font-size: 1.5em; font-weight: normal; background-color: transparent; height: 100%; width: 100%; }
+
+button:hover { cursor: pointer; }
+
+button:focus { outline-color: transparent; outline-style: none; outline: none !important; cursor: pointer; }
 
 .container .bookshelf .book-container .book-list .editTitle, .container .bookshelf .book-container .book-list .book-title { font-size: 2.4em; font-weight: 900; padding-bottom: 26px; word-break: keep-all; line-height: 1.3em; }
 
 .container .bookshelf .book-container .book-list .editPublisher, .container .bookshelf .book-container .book-list .publisher { font-size: 1.5em; font-weight: normal; }
 
-::-webkit-input-placeholder { /* Chrome */ color: #00E676; opacity: 0.8; }
+input::-webkit-input-placeholder { color: #999; }
+
+input:hover::-webkit-input-placeholder { color: #00E676; }
 
 .container { position: absolute; width: 100%; height: 100%; }
 
@@ -50,17 +58,17 @@ button:focus { outline-color: transparent; outline-style: none; outline: none !i
 
 .container .bookshelf .book-container .book-list .editPublisher:hover { color: #00E676; }
 
-.container .bookshelf .book-container .book-list .input-btn { cursor: pointer; display: none; width: auto; height: 30px; padding: 0 20px 30px; margin-left: 10px; float: right; font-size: 1.3em; font-weight: bold; background-color: white; }
-
 .container .bookshelf .book-container .book-list .book-title { color: #303030; }
 
-.container .bookshelf .book-container .book-list .book-title input#input-title { font-size: 1.5em; font-weight: bold; word-break: keep-all; line-height: 1.3em; color: #00E676; }
+.container .bookshelf .book-container .book-list .book-title input#input-title { font-size: 1.4em; font-weight: bold; word-break: keep-all; line-height: 1.2em; }
 
 .container .bookshelf .book-container .book-list .publisher { color: #707070; }
 
-.container .bookshelf .book-container .book-list .publisher input#input-publisher { font-size: 1.5em; font-weight: normal; color: #00E676; }
+.container .bookshelf .book-container .book-list .publisher input#input-publisher { font-size: 1.3em; font-weight: normal; }
 
 .container .bookshelf .book-container .btns { position: absolute; box-sizing: border-box; margin-left: 84%; width: 16%; height: 100%; }
+
+.container .bookshelf .book-container .btns #save-cancel { display: none; }
 
 .container .bookshelf .book-container .btns .edit { position: absolute; width: 50%; height: 100%; }
 
@@ -75,3 +83,15 @@ button:focus { outline-color: transparent; outline-style: none; outline: none !i
 .container .bookshelf .book-container .btns .remove a:active > .material-icons { color: #FF2424; cursor: pointer; }
 
 .container .bookshelf .book-container .btns a > i.material-icons { width: 100%; position: absolute; text-align: center; display: inline-block; color: #e0e0e0; font-size: 36px; bottom: 20px; }
+
+.container .bookshelf .book-container .btns .add-save { background-color: #B2EBF2; }
+
+.container .bookshelf .book-container .btns .add-save:hover { background-color: #80DEEA; }
+
+.container .bookshelf .book-container .btns .add-save:active { background-color: #4DD0E1; }
+
+.container .bookshelf .book-container .btns .add-cancel { background-color: #FF8080; bottom: 0px; }
+
+.container .bookshelf .book-container .btns .add-cancel:hover { background-color: #FF6565; }
+
+.container .bookshelf .book-container .btns .add-cancel:active { background-color: #FF4343; }

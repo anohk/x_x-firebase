@@ -22,6 +22,18 @@
 
       <div id="inputForm">
         <div class="book-container">
+          <!-- save, cancel btns -->
+          <div class="btns">
+            <div class="save-cancel">
+              <div class="add-save">
+                <button class="add-btn save" type="button" name="button" onclick="saveData()">save</button>
+              </div>
+              <div class="add-cancel">
+                <button class="add-btn cancel" type="button" name="button" onclick="hideInputForm()">cancel</button>
+              </div>
+            </div>
+          </div>
+          <!-- title, publisher input -->
           <ul class="book-list">
             <li class="book-title">
               <input type="text" name="title" id="input-title" placeholder="Title">
@@ -29,16 +41,15 @@
             <li class="publisher">
               <input type="text" name="publisher" id="input-publisher" placeholder="Publisher">
             </li>
-            <button type="button" name="button" onclick="saveData()">save</button>
-            <button type="button" name="button" onclick="hideInputForm()">cancel</button>
           </ul>
+
         </div>
       </div>
 
       <div class="book-wrap"></div>
 
     </div>
-
+    <!-- add floating button -->
     <div class="add-wrap">
       <a class="add-btn" onclick="showInputForm()"><i class="material-icons">add_circle</i></a>
     </div>
@@ -108,22 +119,43 @@ function hideInputForm() {
   $('#input-publisher').val('');
 }
 
-function cancel(key) {
-  console.log('CANCEL');
+
+// EDIT DATA
+function editData(key) {
   var targetElement = document.getElementById(key);
 
   var originDataList = targetElement.getElementsByClassName('origin-data');
-  changeDisplayOfElementList(originDataList, 'block');
+  changeDisplayOfElementList(originDataList, 'none');
 
   var editDataList = targetElement.getElementsByClassName('editData');
-  changeDisplayOfElementList(editDataList, 'none');
+  changeDisplayOfElementList(editDataList, 'block');
 
-  var elementsList = document.getElementsByClassName('input-btn');
-  changeDisplayOfElementList(elementsList, 'none');
+  var editTitle = editDataList['title']
+  var editPublisher = editDataList['publisher']
+  var originTitle = originDataList[0].textContent;
+  var originPublisher = originDataList[1].textContent;
+
+  $(editTitle).val(originTitle);
+  $(editPublisher).val(originPublisher);
+  var element = document.getElementById('save-cancel');
+  changeDisplayOfElement(element, 'inline-block');
 
   var element = document.getElementById('edit-remove');
-  element.style.visibility = 'visible';
+  changeDisplayOfElement(element, 'none');
+  // element.style.visibility = 'hidden';
 }
+
+
+// DELETE DATA
+function deleteData(key) {
+  if ( !confirm('이 책을 지우시겠습니까?') ) {
+    return;
+  }
+  var bookshelfRef = database.ref('bookshelf/'+key)
+  bookshelfRef.remove();
+  $('#'+key).remove();
+}
+
 
 
 function saveData(key){
@@ -147,11 +179,11 @@ function saveData(key){
     var editDataList = targetElement.getElementsByClassName('editData');
     changeDisplayOfElementList(editDataList, 'none');
 
-    var elementsList = document.getElementsByClassName('input-btn');
-    changeDisplayOfElementList(elementsList, 'none')
+    var element = document.getElementById('save-cancel');
+    changeDisplayOfElement(element, 'none');
 
     var element = document.getElementById('edit-remove');
-    element.style.visibility = 'visible';
+    changeDisplayOfElement(element, 'inline-block');
 
   } else {
     console.log('create!');
@@ -168,39 +200,27 @@ function saveData(key){
   }
 }
 
-function deleteData(key) {
-  if ( !confirm('이 책을 지우시겠습니까?') ) {
-    return;
-  }
-  var bookshelfRef = database.ref('bookshelf/'+key)
-  bookshelfRef.remove();
-  $('#'+key).remove();
-}
-
-function editData(key) {
+function cancel(key) {
+  console.log('CANCEL');
   var targetElement = document.getElementById(key);
 
   var originDataList = targetElement.getElementsByClassName('origin-data');
-  changeDisplayOfElementList(originDataList, 'none');
+  changeDisplayOfElementList(originDataList, 'block');
 
   var editDataList = targetElement.getElementsByClassName('editData');
-  changeDisplayOfElementList(editDataList, 'block');
-
-  var editTitle = editDataList['title']
-  var editPublisher = editDataList['publisher']
-  var originTitle = originDataList[0].textContent;
-  var originPublisher = originDataList[1].textContent;
-
-  $(editTitle).val(originTitle);
-  $(editPublisher).val(originPublisher);
+  changeDisplayOfElementList(editDataList, 'none');
 
 
-  var inputClassList = targetElement.getElementsByClassName('input-btn')
-  changeDisplayOfElementList(inputClassList, 'inline-block');
+  var element = document.getElementById('save-cancel');
+  // changeDisplayOfElement(element, 'none');
+
 
   var element = document.getElementById('edit-remove');
-  element.style.visibility = 'hidden';
+  changeDisplayOfElement(element, 'inline-block');
 }
+
+
+
 
 
 function changeDisplayOfElement(element, attr) {
