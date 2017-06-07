@@ -79,7 +79,6 @@ function on_child_added(data) {
   // 현재 추가된 데이터의 createDate의 값이 작다면
   // 데이터를 가장 상위에서 보여준다.
   if ( lastCreateDate > createDate ){
-
     $('.book-wrap').prepend(html);
   } else {
     $('.book-wrap').append(html);
