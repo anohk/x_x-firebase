@@ -81,6 +81,7 @@ input:hover::-webkit-input-placeholder { color: #00E676; }
           @extend %title;
           color: #303030;
           input#input-title {
+            width: 100%;
             font-size: 1.4em;
             font-weight: bold;
             word-break: keep-all;
@@ -91,6 +92,7 @@ input:hover::-webkit-input-placeholder { color: #00E676; }
           @extend %publisher;
           color: #707070;
           input#input-publisher {
+            width: 100%;
             font-size: 1.3em;
             font-weight: normal;
           }

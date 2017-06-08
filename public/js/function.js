@@ -2,7 +2,11 @@
 // 추가 버튼을 눌렀을 때 inputForm을 보여준다.
 function showInputForm() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
-  document.getElementById('inputForm').style.display = 'block';
+  var inputForm = document.getElementById('inputForm')
+  changeDisplayOfElement(inputForm, 'block')
+
+  var saveCancelBtn = inputForm.getElementsByClassName('save-cancel');
+  changeDisplayOfElementList(saveCancelBtn, 'block');
 }
 
 // 취소 버튼을 눌렀을 때 inputForm을 숨기고 입력한 데이터 초기화.
@@ -35,7 +39,7 @@ function editData(key) {
   $(editPublisher).val(originPublisher);
 
   var saveCancelBtn = targetElement.getElementsByClassName('save-cancel');
-  changeDisplayOfElementList(saveCancelBtn, 'inline-block');
+  changeDisplayOfElementList(saveCancelBtn, 'block');
 
   var editRemoveBtn = targetElement.getElementsByClassName('edit-remove');
   changeDisplayOfElementList(editRemoveBtn, 'none');
@@ -129,7 +133,6 @@ function changeDisplayOfElement(element, attr) {
 
 function changeDisplayOfElementList(list, attr) {
   for (i=0; i < list.length; i++){
-    // list[i].style.display = attr;
     changeDisplayOfElement(list[i], attr);
 
   }
