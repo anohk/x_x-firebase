@@ -64,19 +64,29 @@
 var database, key;
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyAWBXLcQrIbsYXf3Q4kqbjxx4wk-PP3I9E",
-  authDomain: "test-firebase-83047.firebaseapp.com",
-  databaseURL: "https://test-firebase-83047.firebaseio.com",
-  projectId: "test-firebase-83047",
-  storageBucket: "test-firebase-83047.appspot.com",
-  messagingSenderId: "899439701006"
+  apiKey: "AIzaSyCLLRnW0V7z2x05_zzaQmh2Ez6xyeVtHkY",
+  authDomain: "bookshelf-9b225.firebaseapp.com",
+  databaseURL: "https://bookshelf-9b225.firebaseio.com",
+  projectId: "bookshelf-9b225",
+  storageBucket: "bookshelf-9b225.appspot.com",
+  messagingSenderId: "510442681972"
 };
 firebase.initializeApp(config);
+// var config = {
+//   apiKey: "AIzaSyAWBXLcQrIbsYXf3Q4kqbjxx4wk-PP3I9E",
+//   authDomain: "test-firebase-83047.firebaseapp.com",
+//   databaseURL: "https://test-firebase-83047.firebaseio.com",
+//   projectId: "test-firebase-83047",
+//   storageBucket: "test-firebase-83047.appspot.com",
+//   messagingSenderId: "899439701006"
+// };
+// firebase.initializeApp(config);
 // initialize database
 database = firebase.database();
 
 // data json 파일 열어 데이터 가져와서 데이터베이스에 넣기
 // jsonToDatabase();
+
 function jsonToDatabase() {
   $.getJSON("./bookshelf.json", function(data) {
     setTimeout(function() {

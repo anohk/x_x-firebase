@@ -7,8 +7,8 @@ function showInputForm() {
 
 // 취소 버튼을 눌렀을 때 inputForm을 숨기고 입력한 데이터 초기화.
 function hideInputForm() {
-  var element = document.getElementById('inputForm');
-  changeDisplayOfElement(element, 'none')
+  var inputForm = document.getElementById('inputForm');
+  changeDisplayOfElement(inputForm, 'none')
   $('#input-title').val('');
   $('#input-publisher').val('');
 }
@@ -19,6 +19,7 @@ function hideInputForm() {
 // 수정, 삭제 버튼을 숨기고 저장, 취소 버튼 보여줌
 function editData(key) {
   var targetElement = document.getElementById(key);
+  console.log(targetElement);
 
   var originDataList = targetElement.getElementsByClassName('origin-data');
   changeDisplayOfElementList(originDataList, 'none');
@@ -33,11 +34,11 @@ function editData(key) {
   $(editTitle).val(originTitle);
   $(editPublisher).val(originPublisher);
 
-  var element = document.getElementById('save-cancel');
-  changeDisplayOfElement(element, 'inline-block');
+  var saveCancelBtn = targetElement.getElementsByClassName('save-cancel');
+  changeDisplayOfElementList(saveCancelBtn, 'inline-block');
 
-  var element = document.getElementById('edit-remove');
-  changeDisplayOfElement(element, 'none');
+  var editRemoveBtn = targetElement.getElementsByClassName('edit-remove');
+  changeDisplayOfElementList(editRemoveBtn, 'none');
 }
 
 
@@ -46,7 +47,7 @@ function deleteData(key) {
   if ( !confirm('이 책을 지우시겠습니까?') ) {
     return;
   }
-  var bookshelfRef = database.ref('bookshelf/'+key)
+  var bookshelfRef = firebase.database().ref('bookshelf/'+key)
   bookshelfRef.remove();
   $('#'+key).remove();
 }
@@ -59,7 +60,7 @@ function deleteData(key) {
 // 새로운 데이터를 저장하는 경우 데이터를 생성
 // 입력창을 숨김
 function saveData(key){
-  var bookshelfRef = database.ref('bookshelf');
+  var bookshelfRef = firebase.database().ref('bookshelf');
 
   if ( !key == '' ){
     console.log('edit!');
@@ -68,7 +69,7 @@ function saveData(key){
     var title = $(editDataList[0]).val();
     var publisher = $(editDataList[1]).val();
 
-    bookshelfRef = database.ref('bookshelf/'+key)
+    bookshelfRef = firebase.database().ref('bookshelf/'+key)
     bookshelfRef.update({
       title : title,
       publisher : publisher,
@@ -80,11 +81,11 @@ function saveData(key){
     var editDataList = targetElement.getElementsByClassName('editData');
     changeDisplayOfElementList(editDataList, 'none');
 
-    var element = document.getElementById('save-cancel');
-    changeDisplayOfElement(element, 'none');
+    var saveCancelBtn = targetElement.getElementsByClassName('save-cancel');
+    changeDisplayOfElementList(saveCancelBtn, 'none');
 
-    var element = document.getElementById('edit-remove');
-    changeDisplayOfElement(element, 'inline-block');
+    var editRemoveBtn = targetElement.getElementsByClassName('edit-remove');
+    changeDisplayOfElementList(editRemoveBtn, 'inline-block');
 
   } else {
     console.log('create!');
@@ -112,11 +113,12 @@ function cancel(key) {
   var editDataList = targetElement.getElementsByClassName('editData');
   changeDisplayOfElementList(editDataList, 'none');
 
-  var element = document.getElementById('save-cancel');
-  changeDisplayOfElement(element, 'none');
+  var saveCancelBtn = targetElement.getElementsByClassName('save-cancel');
+  // saveCancelBtn.style.display = "none";
+  changeDisplayOfElementList(saveCancelBtn, 'none');
 
-  var element = document.getElementById('edit-remove');
-  changeDisplayOfElement(element, 'inline-block');
+  var editRemoveBtn = document.getElementsByClassName('edit-remove');
+  changeDisplayOfElementList(editRemoveBtn, 'inline-block');
 }
 
 
@@ -127,6 +129,8 @@ function changeDisplayOfElement(element, attr) {
 
 function changeDisplayOfElementList(list, attr) {
   for (i=0; i < list.length; i++){
+    // list[i].style.display = attr;
     changeDisplayOfElement(list[i], attr);
+
   }
 }

@@ -15,7 +15,7 @@ $(window).scroll(function(){
 function loadBookList(){
   // loadBookList가 실행되고 있는 도중에는 스크롤 이벤트 발생하지 않음
   isLoading = true;
-  var bookshelfRef = database.ref('bookshelf/').orderByChild('createDate');
+  var bookshelfRef = firebase.database().ref('bookshelf').orderByChild('createDate');
 
   if (lastCreateDate) {
     // 만약 lastCreateDate가 있다면 21개의 데이터 호출 : 이후 중복 체크해서 제거해야함
@@ -46,8 +46,9 @@ function on_child_added(data) {
   var publisher = bookData.publisher;
   var html =
   "<div class=\"book-container\" id=\"" + key + "\">" +
+
   // 수정 삭제 버튼
-  "<div class=\"btns\" id=\"edit-remove\">" +
+  "<div class=\"btns edit-remove\">" +
   "<div class=\"edit\">" +
   "<a onclick=\"editData('"+key+"')\"><i class=\"material-icons\">mode_edit</i></a>" +
   "</div>" +
@@ -57,7 +58,7 @@ function on_child_added(data) {
   "</div>" +
 
   // 저장 취소 버튼
-  "<div class=\"btns\" id=\"save-cancel\">" +
+  "<div class=\"btns save-cancel\">" +
   "<div class=\"add-save\">" +
   "<button type=\"button\" name=\"button\" onclick=\"saveData('"+key+"')\">save</button>" +
   "</div>" +

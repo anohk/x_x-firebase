@@ -26,8 +26,6 @@ input::-webkit-input-placeholder { color: #999; }
 
 input:hover::-webkit-input-placeholder { color: #00E676; }
 
-#save-cancel { display: none; }
-
 .container { position: absolute; width: 100%; height: 100%; }
 
 .container .add-wrap { position: fixed; float: right; bottom: 50px; right: 60px; }
@@ -67,6 +65,8 @@ input:hover::-webkit-input-placeholder { color: #00E676; }
 .container .bookshelf .book-container .book-list .publisher { color: #707070; }
 
 .container .bookshelf .book-container .book-list .publisher input#input-publisher { font-size: 1.3em; font-weight: normal; }
+
+.container .bookshelf .book-container .save-cancel { display: none; }
 
 .container .bookshelf .book-container .btns { position: absolute; width: 16%; height: 100%; margin-left: 84%; box-sizing: border-box; }
 
