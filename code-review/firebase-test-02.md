@@ -28,60 +28,58 @@ firebase.initializeApp(config);
 
 
 ```html
-<body>
-	<div class="container">
+<div class="container">
 
-		<div class="title">
-			<h2>Bookshelf of anohk</h2>
-		</div>
+	<div class="title">
+		<h2>Bookshelf of anohk</h2>
+	</div>
 
-		<div class="bookshelf">
+	<div class="bookshelf">
     
-		<!--   1   -->
-		<!--Start add new item -->
-		<div id="inputForm">
-			<div class="book-container">
-			
-				<!-- save, cancel btns -->
-				<div class="btns">
-					<div class="save-cancel">
-						<div class="add-save">
-							<button class="add-btn save" type="button" name="button">save</button>
-						</div>
-						<div class="add-cancel">
-							<button class="add-btn cancel" type="button" name="button">cancel</button>
-						</div>
+	<!--   1   -->
+	<!--Start add new item -->
+	<div id="inputForm">
+		<div class="book-container">
+		
+			<!-- save, cancel btns -->
+			<div class="btns">
+				<div class="save-cancel">
+					<div class="add-save">
+						<button class="add-btn save" type="button" name="button">save</button>
+					</div>
+					<div class="add-cancel">
+						<button class="add-btn cancel" type="button" name="button">cancel</button>
 					</div>
 				</div>
-          
-				<!-- title, publisher input -->
-				<ul class="book-list">
-					<li class="book-title">
-						<input type="text" name="title" id="input-title" placeholder="Title">
-					</li>
-					<li class="publisher">
-						<input type="text" name="publisher" id="input-publisher" placeholder="Publisher">
-					</li>
-				</ul>
-				
 			</div>
-		</div>
-		<!--End add new item-->
       
-      <!--   2   -->
-      <!-- book list -->
-      <div class="book-wrap"></div>
-
-    </div>
-	
-	<!--   3   -->
-	<!-- add floating button -->
-	<div class="add-wrap">
-		<a class="add-btn"><i class="material-icons">add_circle</i></a>
+			<!-- title, publisher input -->
+			<ul class="book-list">
+				<li class="book-title">
+					<input type="text" name="title" id="input-title" placeholder="Title">
+				</li>
+				<li class="publisher">
+					<input type="text" name="publisher" id="input-publisher" placeholder="Publisher">
+				</li>
+			</ul>
+			
+		</div>
 	</div>
+	<!--End add new item-->
+  
+  <!--   2   -->
+  <!-- book list -->
+  <div class="book-wrap"></div>
+
+</div>
+	
+<!--   3   -->
+<!-- add floating button -->
+<div class="add-wrap">
+	<a class="add-btn"><i class="material-icons">add_circle</i></a>
+</div>
     
-  </div>
-</body>
+</div>
 ```
 
 ### 1. `<div id="inputForm">...</div>`는 두 가지 영역으로 이루어져있다.  
