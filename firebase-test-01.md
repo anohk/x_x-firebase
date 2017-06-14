@@ -64,15 +64,15 @@ $.ajax({
 
 비동기식으로 서버에 접속하여 json 타입의 데이터를 불러온다.
 
-$getJSON() 메서드를 사용하여 bookshelf.json 파일을 읽어 콜백함수로 전달한다. 
+`$getJSON()` 메서드를 사용하여 `bookshelf.json` 파일을 읽어 콜백함수로 전달한다. 
 
 > 콜백함수?  
 > 함수를 인자로 넘겨 사용하는 것.
 > 
 > ```
 > $("#btn").click(function() {
-     alert("Btn Clicked");
-});
+>     alert("Btn Clicked");
+>});
 > ```
 > click()함수의 인자로 함수를 전달하고 있다.
 > click() 함수가 실행되면 인자로 전달된 함수가 실행된다.
