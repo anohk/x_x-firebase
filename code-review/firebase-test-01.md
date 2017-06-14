@@ -15,8 +15,6 @@
 빠른 속도로 데이터가 입력되기 때문에, createDate의 꽤 작은 수까지 정확히 일치하는 데이터들이 생겼다.  
 각 데이터들의 createDate 값에 강제적으로 격차를 주기 위해 `setTimeout` 메서드를 사용하였다.
 
-
-
 ```javascript
 function jsonToDatabase() {
   $.getJSON("./bookshelf.json", function(data) {
@@ -85,4 +83,35 @@ $.ajax({
 > # 3초 후 alert()을 실행한다.
 > setTimeout(function(){ alert("Hello"); }, 3000);
 > ```
+
+### Number()
+`Number()` 메서드는 변수를 숫자로 변환한다. 
+
+### new Date()
+`new Date()` 메서드로 Date 객체를 생성할 수 있다.  
+[new Date()](https://www.w3schools.com/js/js_dates.asp)
+
+### getTime()
+`getTime()` 메서드는 1970년 1월 1일 부터의 시간을 밀리세컨드로 리턴한다.   
+[getTime()](https://www.w3schools.com/jsref/jsref_gettime.asp)  
+
+
+### createDate: Number.MAX\_SAFE\_INTEGER - new Date().getTime()
+
+firebase에서는 데이터베이스에서 역순으로 데이터를 읽어오는 것을 지원하지 않는다.  
+따라서 데이터를 최신순으로 정렬을 하기 위해 여러가지 방법을 시도했었는데 그 중 가장 간결한 방법은 createDate의 값을 조절하는 것이었다.   
+
+`new Date().getTime()` 으로 생성된 시간을 숫자로 나타낼 수 있다.   
+`createDate = new Date().getTime()` 로 설정하고, `createDate`를 기준으로 정렬하면  
+맨 처음에 생성된 데이터의 createDate 값이 제일 작은 수 이기 때문에 최상위를 차지하게된다. 
+
+화면에서는 최신 데이터를 최상위로 보여주고 싶었다. 따라서 `createDate`의 값을 역으로 바꿔주는 방법으로 `MAX_SAFE_INTEGER`를 사용하였다. 
+
+> `MAX_SAFE_INTEGER`는 javascript의 최대 안전 정수를 나타낸다.   
+> [MAX\_SAFE\_INTEGER](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER)
+
+createDate를 다음과 같이 설정하면, 최신 데이터의 createDate가 가장 작은 값을 갖게된다. 
+`createDate: Number.MAX_SAFE_INTEGER - new Date().getTime()`
+
+위와 같이 설정한 후, createDate를 기준으로 정렬하면 최신 데이터가 최상위에 위치하게 할 수 있다. 
 
