@@ -15,7 +15,6 @@ var config = {
   messagingSenderId: "510442681972"
 };
 firebase.initializeApp(config);
-
 </script>
 ```
 
@@ -38,7 +37,7 @@ firebase.initializeApp(config);
 
 		<div class="bookshelf">
     
-    	<!--   1   -->
+		<!--   1   -->
 		<!--Start add new item -->
 		<div id="inputForm">
 			<div class="book-container">
