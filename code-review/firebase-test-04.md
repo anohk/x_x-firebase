@@ -8,7 +8,7 @@
 다음은 단일 데이터에 적용할 html 구조이다.
 
 ```html
-// <div class="book-wrap"></div> 내부
+<!-- <div class="book-wrap"></div> 내부 -->
 
 <div class="book-container">
 	
