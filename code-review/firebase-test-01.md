@@ -98,8 +98,9 @@ $.ajax({
 
 ### createDate: Number.MAX\_SAFE\_INTEGER - new Date().getTime()
 
-firebase에서는 데이터베이스에서 역순으로 데이터를 읽어오는 것을 지원하지 않는다.  
-따라서 데이터를 최신순으로 정렬을 하기 위해 여러가지 방법을 시도했었는데 그 중 가장 간결한 방법은 createDate의 값을 조절하는 것이었다.   
+데이터를 최신순으로 정렬을 하기 위해 여러가지 방법을 시도했었는데 그 중 가장 간결한 방법은 createDate의 값을 조절하는 것이었다.   
+
+> firebase에서 역순으로 데이터를 가져오는 방법을 지원하지만, 이 부분은 체크를 못함.
 
 `new Date().getTime()` 으로 생성된 시간을 숫자로 나타낼 수 있다.   
 `createDate = new Date().getTime()` 로 설정하고, `createDate`를 기준으로 정렬하면  
